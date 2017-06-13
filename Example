@@ -1,0 +1,63 @@
+
+class Ship {
+
+	public void setCourse() {
+		System.out.println("The ship is setting course, captain.");
+	}
+
+}
+
+class Frigate extends Ship {
+
+	public void setCourse() {
+		System.out.println("The frigate is setting course, captain.");
+	}
+
+	public void dock() {
+		System.out.println("The frigate is preparing to dock, captain.");
+	}
+
+}
+
+public class Example {
+
+	public static void main(String[] args) {
+
+		Ship ship1 = new Ship();
+		Frigate frig1 = new Frigate();
+
+		ship1.setCourse();
+		frig1.setCourse();
+		frig1.dock();
+
+		// Upcasting
+    
+		Ship ship2 = frig1;
+    
+		// ship2 can run setCourse() because both classes have setCourse()
+		// defined; The method runs the Frigate setCourse() method because ship2
+		// is set to an object of Frigate (frig1)
+    
+		ship2.setCourse();
+    
+		// ship2 is of type Ship, therefore cannot call childclass specific
+		// methods in Frigate
+		// ship2.dock(); Won't work
+
+		// Downcasting
+    
+		Ship ship3 = new Frigate();
+		Frigate frig2 = (Frigate) ship3;
+		frig2.setCourse();
+		frig2.dock();
+
+		// Doesn't work; Runtime error
+    
+		Ship ship4 = new Ship();
+		// Frigate frig3 = (Frigate)ship4;
+		// frig3.setCourse();
+		// frig3.dock();
+
+	}
+
+}
